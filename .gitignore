@@ -1,0 +1,9 @@
+./idea
+.idea/misc.xmlgit
+server/node_modules/
+.idea/modules.xml
+.idea/reactserver.iml
+.idea/workspace.xml
+server/yarn-error.log
+server/yarn.lock
+
