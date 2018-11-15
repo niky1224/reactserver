@@ -6,4 +6,5 @@ server/node_modules/
 .idea/workspace.xml
 server/yarn-error.log
 server/yarn.lock
+server/build/
 
