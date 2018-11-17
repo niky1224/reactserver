@@ -7,4 +7,5 @@ server/node_modules/
 server/yarn-error.log
 server/yarn.lock
 server/build/
+server/public/
 
