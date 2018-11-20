@@ -1,13 +1,16 @@
 import * as actionsTypes from './actionTypes';
 
 const initState = {
-    arry: '11'
+    arry: []
 };
 export default (state = initState, action) => {
+    debugger;
+
     let newSate;
     switch (action.type) {
-        case action.type === actionsTypes.DATA_LIST:
-            newSate={...state,arry:action.valueList}
+        case actionsTypes.DATA_LIST:
+             newSate={...state ,arry:action.valueList.arry};
+            return newSate;
             break;
         default:
             return state;

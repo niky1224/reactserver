@@ -1,2 +1,2 @@
-import homereducer from './reducer';
-export default homereducer;
+import reducer from './reducer';
+export {reducer};
