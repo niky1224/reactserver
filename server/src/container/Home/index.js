@@ -1,5 +1,4 @@
 import React ,{Component}from 'react';
-import Header from '../../components/headers';
 import {connect} from 'react-redux';
 import {bindActionCreators } from 'redux';
 import * as homeActions from './store/actions';
@@ -10,7 +9,6 @@ class Home extends Component{
     render(){
         return(
             <div>
-                <Header/>
                 <div onClick={()=>{alert()}}>{this.props.arry}</div>
                 {this.renderlist()}
                 {/*函数是要执行的*/}

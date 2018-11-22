@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import {StaticRouter, Route} from 'react-router-dom';
-import {matchRoutes} from "react-router-config";//服务端匹配多级路由
+import {matchRoutes,renderRoutes} from "react-router-config";//服务端匹配多级路由
 import Routers from '../routers';//路由统一管理
 import {Provider} from 'react-redux';
 import {serverstore as getstore} from '../store'
@@ -23,14 +23,12 @@ export const render = (req, res) => {
     const matchedRoutes = matchRoutes(Routers, req.path);
     matchedRoutes.map((item) => {//利用路由增加的方法
         if (item.route.loadData) {
-            console.log(111);
             promises.push(item.route.loadData());
         }
     });
 
     // 在服务器端使用路由用StaticRouter 还必须要有 location context其中context用来数据注水以便浏览器端再次渲染时获取数据
     Promise.all(promises).then((data) => {
-        console.log(data,222222222);
         if(data.length){
             const data1 = data[0];
             store.dispatch(homeActions.listAcion(data1));//取回到数据在去存到redux中
@@ -42,9 +40,10 @@ export const render = (req, res) => {
             <Provider store={store}>
                 <StaticRouter location={req.path} context={{}}>
                     <div>
-                        {Routers.map(route => (
-                            <Route key={route.key} {...route} />
-                        ))}
+                        {renderRoutes(Routers)}
+                        {/*{Routers.map(route => (*/}
+                            {/*<Route key={route.key} {...route} />*/}
+                        {/*))}*/}
                     </div>
 
                 </StaticRouter>

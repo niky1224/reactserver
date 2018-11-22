@@ -2,6 +2,10 @@ import React from 'react';//使用jsx语法就要引入react
 
 import Home from './container/Home';
 import Login from './container/Login';
+import Test from './container/test';
+import App from './app';
+
+
 import thunk from "redux-thunk";
 import {applyMiddleware, createStore,combineReducers} from "redux";
 
@@ -18,16 +22,28 @@ export default
  [
     {
         path: "/",
-        component: Home,
-        exact:true,
-        loadData: () => Home.loadData(store),
-        key:'home'
-    },
-     {
-         path: "/login",
-         component: Login,
-         exact:true,
-         key:'login'
-     }
+        component: App,
+        routes:[
+            {
+                path: "/",
+                component: Home,
+                exact:true,
+                loadData: () => Home.loadData(store),
+                key:'home',
+            },
+            {
+                path: "/test",
+                component: Test,
+                exact:true,
+                key:'test'
+            },
+            {
+                path: "/login",
+                component: Login,
+                exact:true,
+                key:'login'
+            }
+        ]
+    }
 ]
 
